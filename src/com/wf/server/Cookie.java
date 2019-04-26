@@ -11,19 +11,19 @@ import org.jboss.com.sun.net.httpserver.HttpExchange;
 import com.wf.inter.HttpCookie;
 
 /**
- * cookie的处理器
+ * cookie鐨勫鐞嗗櫒
  * @author Administrator
  *
  */
 public class Cookie implements HttpCookie {
 	
-	//保存链接对象
+	//淇濆瓨閾炬帴瀵硅薄
 	private HttpExchange exchange ;
 	
-	//保存请求Cookie
+	//淇濆瓨璇锋眰Cookie
 	private Map<String, String> requestCookie ;
 	
-	//保存响应cookie
+	//淇濆瓨鍝嶅簲cookie
 	private Map<String, String> responseCookie ;
 	
 	public Map<String, String> getResponseCookie() {
@@ -34,7 +34,7 @@ public class Cookie implements HttpCookie {
 		this.exchange = exchange ;
 	}
 	
-	//解析cookie
+	//瑙ｆ瀽cookie
 	public String get(String key){
 		if(requestCookie == null){
 			cookieFormat();
@@ -42,7 +42,7 @@ public class Cookie implements HttpCookie {
 		return requestCookie.get(key) ;
 	}
 	
-	//设置返回cookie
+	//璁剧疆杩斿洖cookie
 	public void set(String key , String value){
 		if(responseCookie == null){
 			responseCookie = new HashMap<String, String>() ;
@@ -63,6 +63,10 @@ public class Cookie implements HttpCookie {
 	private void cookieFormat(){
 		Headers header = exchange.getRequestHeaders() ;
 		List<String> list = header.get("Cookie") ;
+		if(list == null){
+			requestCookie = new HashMap<String, String>() ;
+			return ;
+		}
 		Map<String , String> cookie = new HashMap<String, String>() ;
 		for (String s : list) {
 			if(s.contains(";")){
