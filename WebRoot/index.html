@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" />
+<input accept="*" type="file" id="up" />
+
+<div id="msg" style="width:1000px;height:500px;overflow:auto;margin:10px auto;background:gray;"></div>
+
+<script src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.js"></script>
+<script>
+	$(function() {
+                $("#up").change(function() {
+                    var file = this.files[0];
+                    if(undefined == file){
+                        return ;
+                    }
+                    r = new FileReader(); 
+                    r.readAsDataURL(file); 
+		    var base64 = "" ;
+                    r.onload = function(e) {
+                        base64 = e.target.result;
+                        $("#msg").html(base64) ;
+                    }
+                });
+            });
+</script>
+</html>
