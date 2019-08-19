@@ -4,17 +4,17 @@ import com.wf.listener.ContextNode;
 
 
 /**
- * ¼àÌıÕßÖ´ĞĞ·½·¨
+ * ç›‘å¬è€…æ‰§è¡Œæ–¹æ³•
  * @author Administrator
  *
  */
 public interface Listener {
 	/**
-	 * µ±Êı¾İÓĞ¸úĞÂÊ±Ö´ĞĞ·½·¨
+	 * å½“æ•°æ®æœ‰è·Ÿæ–°æ—¶æ‰§è¡Œæ–¹æ³•
 	 */
 	void update(ContextNode node) ;
 	/**
-	 * »Øµô·½·¨
+	 * æ³¨å†Œäº‹ä»¶
 	 * @param context
 	 */
 	void regist(ContextListener context) ;
